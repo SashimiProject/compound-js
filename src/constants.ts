@@ -1,6 +1,7 @@
 // Publicly revealed on the parent class
 export const constants = {
   'PriceFeed': 'PriceFeed',
+  'SASHIMI': 'SASHIMI',
   'Maximillion': 'Maximillion',
   'CompoundLens': 'CompoundLens',
   'GovernorAlpha': 'GovernorAlpha',
@@ -35,6 +36,7 @@ export const constants = {
 export const address = {
   "mainnet": {
     "PriceFeed": "0x922018674c12a7f0d394ebeef9b58f186cde13c1",
+    "SASHIMI": "0xC28E27870558cF22ADD83540d2126da2e4b464c2",
     "Maximillion": "0xf859A1AD94BcF445A406B892eF0d3082f4174088",
     "CompoundLens": "0xd513d22422a3062Bd342Ae374b4b9c20E0a9a074",
     "GovernorAlpha": "0xc0dA01a04C3f3E0be433606045bB7017A7323E38",
@@ -116,6 +118,7 @@ export const address = {
   },
   "kovan": {
     "PriceFeed": "0xbBdE93962Ca9fe39537eeA7380550ca6845F8db7",
+    "SASHIMI": "0x89d5F2E52D36b85e72e25e8fE46d709D445c03Fc",
     "Maximillion": "0xC363f83902Ac614F318b04771d21D25aC0d73be5",
     "CompoundLens": "0x08CcdB87966C4C7c3Ce7dA8C103c8E14627753D0",
     "GovernorAlpha": "0x665a5f09716d63D9256934855b0CE2056a5C4Cf8",
