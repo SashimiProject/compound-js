@@ -65,7 +65,7 @@ const Compound = function(
     ...cToken,
     ...priceFeed,
     ...gov,
-    claimComp: comp.claimComp,
+    claimSashimi: comp.claimSashimi,
     delegate: comp.delegate,
     delegateBySig: comp.delegateBySig,
     createDelegateSignature: comp.createDelegateSignature,
@@ -88,8 +88,8 @@ Compound._ethers = ethers;
 Compound.decimals = decimals;
 Compound.abi = abi;
 Compound.comp = {
-  getCompBalance: comp.getCompBalance,
-  getCompAccrued: comp.getCompAccrued,
+  getSashimiBalance: comp.getSashimiBalance,
+  getSashimiAccrued: comp.getSashimiAccrued,
 };
 Object.assign(Compound, constants);
 

@@ -14,8 +14,8 @@ import { CallOptions, TrxResponse } from './types';
  *
  * @param {any[]} markets An array of strings of markets to enter, meaning use
  *     those supplied assets as collateral.
- * @param {CallOptions} [options] Call options and Ethers.js overrides for the 
- *     transaction. A passed `gasLimit` will be used in both the `approve` (if 
+ * @param {CallOptions} [options] Call options and Ethers.js overrides for the
+ *     transaction. A passed `gasLimit` will be used in both the `approve` (if
  *     not supressed) and `mint` transactions.
  *
  * @returns {object} Returns an Ethers.js transaction object of the enterMarkets
@@ -25,7 +25,7 @@ import { CallOptions, TrxResponse } from './types';
  *
  * ```
  * const compound = new Compound(window.ethereum);
- * 
+ *
  * (async function () {
  *   const trx = await compound.enterMarkets(Compound.ETH); // Use [] for multiple
  *   console.log('Ethers.js transaction object', trx);
@@ -49,8 +49,8 @@ export async function enterMarkets(
 
   const addresses = [];
   for (let i = 0; i < markets.length; i++) {
-    if (markets[i][0] !== 'c') {
-      markets[i] = 'c' + markets[i];
+    if (markets[i][0] !== 'sl') {
+      markets[i] = 'sl' + markets[i];
     }
 
     if (!cTokens.includes(markets[i])) {
@@ -76,8 +76,8 @@ export async function enterMarkets(
  * Exits the user's address from a Compound Protocol market.
  *
  * @param {string} market A string of the symbol of the market to exit.
- * @param {CallOptions} [options] Call options and Ethers.js overrides for the 
- *     transaction. A passed `gasLimit` will be used in both the `approve` (if 
+ * @param {CallOptions} [options] Call options and Ethers.js overrides for the
+ *     transaction. A passed `gasLimit` will be used in both the `approve` (if
  *     not supressed) and `mint` transactions.
  *
  * @returns {object} Returns an Ethers.js transaction object of the exitMarket
@@ -87,7 +87,7 @@ export async function enterMarkets(
  *
  * ```
  * const compound = new Compound(window.ethereum);
- * 
+ *
  * (async function () {
  *   const trx = await compound.exitMarket(Compound.ETH);
  *   console.log('Ethers.js transaction object', trx);
@@ -105,8 +105,8 @@ export async function exitMarket(
     throw Error(errorPrefix + 'Argument `market` must be a string of a cToken market name.');
   }
 
-  if (market[0] !== 'c') {
-    market = 'c' + market;
+  if (market[0] !== 'sl') {
+    market = 'sl' + market;
   }
 
   if (!cTokens.includes(market)) {

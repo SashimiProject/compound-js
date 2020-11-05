@@ -20,9 +20,9 @@ function validateAsset(
     throw Error(errorPrefix + 'Argument `' + argument + '` must be a non-empty string.');
   }
 
-  const assetIsCToken = asset[0] === 'c';
+  const assetIsCToken = asset[0] === 'sl';
 
-  const cTokenName = assetIsCToken ? asset : 'c' + asset;
+  const cTokenName = assetIsCToken ? asset : 'sl' + asset;
   const cTokenAddress = address[this._network.name][cTokenName];
 
   let underlyingName = assetIsCToken ? asset.slice(1, asset.length) : asset;
@@ -52,7 +52,7 @@ async function cTokenExchangeRate(
   const method = 'exchangeRateCurrent';
   const options = {
     _compoundProvider: this._provider,
-    abi: cTokenName === constants.cETH ? abi.cEther : abi.cErc20,
+    abi: cTokenName === constants.slETH ? abi.cEther : abi.cErc20,
   };
   const exchangeRateCurrent = await eth.read(address, method, [], options);
   const mantissa = 18 + underlyingDecimals - 8; // cToken always 8 decimals
@@ -77,21 +77,21 @@ async function cTokenExchangeRate(
  * ```
  * const compound = new Compound(window.ethereum);
  * let price;
- * 
+ *
  * (async function () {
- * 
+ *
  *   price = await compound.getPrice(Compound.WBTC);
  *   console.log('WBTC in USD', price); // 6 decimals, see Open Price Feed docs
- * 
+ *
  *   price = await compound.getPrice(Compound.BAT, Compound.USDC); // supports cTokens too
  *   console.log('BAT in USDC', price);
- * 
+ *
  * })().catch(console.error);
  * ```
  */
 export async function getPrice(
   asset: string,
-  inAsset: string = constants.USDC
+  inAsset: string = constants.USDT
 ) : Promise<number> {
   await netId(this);
   const errorPrefix = 'Compound [getPrice] | ';

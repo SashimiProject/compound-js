@@ -19,12 +19,12 @@ import { CallOptions, TrxResponse } from './types';
  * @param {string} asset A string of the asset to supply.
  * @param {number | string | BigNumber} amount A string, number, or BigNumber
  *     object of the amount of an asset to supply. Use the `mantissa` boolean in
- *     the `options` parameter to indicate if this value is scaled up (so there 
+ *     the `options` parameter to indicate if this value is scaled up (so there
  *     are no decimals) or in its natural scale.
- * @param {boolean} noApprove Explicitly prevent this method from attempting an 
+ * @param {boolean} noApprove Explicitly prevent this method from attempting an
  *     ERC-20 `approve` transaction prior to sending the `mint` transaction.
- * @param {CallOptions} [options] Call options and Ethers.js overrides for the 
- *     transaction. A passed `gasLimit` will be used in both the `approve` (if 
+ * @param {CallOptions} [options] Call options and Ethers.js overrides for the
+ *     transaction. A passed `gasLimit` will be used in both the `approve` (if
  *     not supressed) and `mint` transactions.
  *
  * @returns {object} Returns an Ethers.js transaction object of the supply
@@ -37,13 +37,13 @@ import { CallOptions, TrxResponse } from './types';
  *
  * // Ethers.js overrides are an optional 3rd parameter for `supply`
  * // const trxOptions = { gasLimit: 250000, mantissa: false };
- * 
+ *
  * (async function() {
- * 
+ *
  *   console.log('Supplying ETH to the Compound Protocol...');
  *   const trx = await compound.supply(Compound.ETH, 1);
  *   console.log('Ethers.js transaction object', trx);
- * 
+ *
  * })().catch(console.error);
  * ```
  */
@@ -56,7 +56,7 @@ export async function supply(
   await netId(this);
   const errorPrefix = 'Compound [supply] | ';
 
-  const cTokenName = 'c' + asset;
+  const cTokenName = 'sl' + asset;
   const cTokenAddress = address[this._network.name][cTokenName];
 
   if (!cTokenAddress || !underlyings.includes(asset)) {
@@ -78,7 +78,7 @@ export async function supply(
 
   amount = ethers.BigNumber.from(amount.toString());
 
-  if (cTokenName === constants.cETH) {
+  if (cTokenName === constants.slETH) {
     options.abi = abi.cEther;
   } else {
     options.abi = abi.cErc20;
@@ -86,7 +86,7 @@ export async function supply(
 
   options._compoundProvider = this._provider;
 
-  if (cTokenName !== constants.cETH && noApprove !== true) {
+  if (cTokenName !== constants.slETH && noApprove !== true) {
     const underlyingAddress = address[this._network.name][asset];
     const userAddress = this._provider.address;
 
@@ -112,7 +112,7 @@ export async function supply(
   }
 
   const parameters = [];
-  if (cTokenName === constants.cETH) {
+  if (cTokenName === constants.slETH) {
     options.value = amount;
   } else {
     parameters.push(amount);
@@ -127,10 +127,10 @@ export async function supply(
  * @param {string} asset A string of the asset to redeem, or its cToken name.
  * @param {number | string | BigNumber} amount A string, number, or BigNumber
  *     object of the amount of an asset to redeem. Use the `mantissa` boolean in
- *     the `options` parameter to indicate if this value is scaled up (so there 
- *     are no decimals) or in its natural scale. This can be an amount of 
+ *     the `options` parameter to indicate if this value is scaled up (so there
+ *     are no decimals) or in its natural scale. This can be an amount of
  *     cTokens or underlying asset (use the `asset` parameter to specify).
- * @param {CallOptions} [options] Call options and Ethers.js overrides for the 
+ * @param {CallOptions} [options] Call options and Ethers.js overrides for the
  *     transaction.
  *
  * @returns {object} Returns an Ethers.js transaction object of the redeem
@@ -140,13 +140,13 @@ export async function supply(
  *
  * ```
  * const compound = new Compound(window.ethereum);
- * 
+ *
  * (async function() {
- * 
+ *
  *   console.log('Redeeming ETH...');
  *   const trx = await compound.redeem(Compound.ETH, 1); // also accepts cToken args
  *   console.log('Ethers.js transaction object', trx);
- * 
+ *
  * })().catch(console.error);
  * ```
  */
@@ -162,9 +162,9 @@ export async function redeem(
     throw Error(errorPrefix + 'Argument `asset` must be a non-empty string.');
   }
 
-  const assetIsCToken = asset[0] === 'c';
+  const assetIsCToken = asset[0] === 'sl';
 
-  const cTokenName = assetIsCToken ? asset : 'c' + asset;
+  const cTokenName = assetIsCToken ? asset : 'sl' + asset;
   const cTokenAddress = address[this._network.name][cTokenName];
 
   const underlyingName = assetIsCToken ? asset.slice(1, asset.length) : asset;
@@ -190,7 +190,7 @@ export async function redeem(
 
   const trxOptions: CallOptions = {
     _compoundProvider: this._provider,
-    abi: cTokenName === constants.cETH ? abi.cEther : abi.cErc20,
+    abi: cTokenName === constants.slETH ? abi.cEther : abi.cErc20,
   };
   const parameters = [ amount ];
   const method = assetIsCToken ? 'redeem' : 'redeemUnderlying';
@@ -203,13 +203,13 @@ export async function redeem(
  *     address must first have supplied collateral and entered a corresponding
  *     market.
  *
- * @param {string} asset A string of the asset to borrow (must be a supported 
+ * @param {string} asset A string of the asset to borrow (must be a supported
  *     underlying asset).
  * @param {number | string | BigNumber} amount A string, number, or BigNumber
  *     object of the amount of an asset to borrow. Use the `mantissa` boolean in
- *     the `options` parameter to indicate if this value is scaled up (so there 
+ *     the `options` parameter to indicate if this value is scaled up (so there
  *     are no decimals) or in its natural scale.
- * @param {CallOptions} [options] Call options and Ethers.js overrides for the 
+ * @param {CallOptions} [options] Call options and Ethers.js overrides for the
  *     transaction.
  *
  * @returns {object} Returns an Ethers.js transaction object of the borrow
@@ -219,17 +219,17 @@ export async function redeem(
  *
  * ```
  * const compound = new Compound(window.ethereum);
- * 
+ *
  * (async function() {
- * 
+ *
  *   const daiScaledUp = '32000000000000000000';
  *   const trxOptions = { mantissa: true };
- * 
+ *
  *   console.log('Borrowing 32 Dai...');
  *   const trx = await compound.borrow(Compound.DAI, daiScaledUp, trxOptions);
- * 
+ *
  *   console.log('Ethers.js transaction object', trx);
- * 
+ *
  * })().catch(console.error);
  * ```
  */
@@ -241,7 +241,7 @@ export async function borrow(
   await netId(this);
   const errorPrefix = 'Compound [borrow] | ';
 
-  const cTokenName = 'c' + asset;
+  const cTokenName = 'sl' + asset;
   const cTokenAddress = address[this._network.name][cTokenName];
 
   if (!cTokenAddress || !underlyings.includes(asset)) {
@@ -268,29 +268,29 @@ export async function borrow(
     _compoundProvider: this._provider,
   };
   const parameters = [ amount ];
-  trxOptions.abi = cTokenName === constants.cETH ? abi.cEther : abi.cErc20;
+  trxOptions.abi = cTokenName === constants.slETH ? abi.cEther : abi.cErc20;
 
   return eth.trx(cTokenAddress, 'borrow', parameters, trxOptions);
 }
 
 /**
- * Repays a borrowed Ethereum asset for the user or on behalf of another 
+ * Repays a borrowed Ethereum asset for the user or on behalf of another
  *     Ethereum address.
  *
- * @param {string} asset A string of the asset that was borrowed (must be a 
+ * @param {string} asset A string of the asset that was borrowed (must be a
  *     supported underlying asset).
  * @param {number | string | BigNumber} amount A string, number, or BigNumber
  *     object of the amount of an asset to borrow. Use the `mantissa` boolean in
- *     the `options` parameter to indicate if this value is scaled up (so there 
+ *     the `options` parameter to indicate if this value is scaled up (so there
  *     are no decimals) or in its natural scale.
- * @param {string | null} [borrower] The Ethereum address of the borrower to 
+ * @param {string | null} [borrower] The Ethereum address of the borrower to
  *     repay an open borrow for. Set this to `null` if the user is repaying
  *     their own borrow.
- * @param {boolean} noApprove Explicitly prevent this method from attempting an 
- *     ERC-20 `approve` transaction prior to sending the subsequent repayment 
+ * @param {boolean} noApprove Explicitly prevent this method from attempting an
+ *     ERC-20 `approve` transaction prior to sending the subsequent repayment
  *     transaction.
- * @param {CallOptions} [options] Call options and Ethers.js overrides for the 
- *     transaction. A passed `gasLimit` will be used in both the `approve` (if 
+ * @param {CallOptions} [options] Call options and Ethers.js overrides for the
+ *     transaction. A passed `gasLimit` will be used in both the `approve` (if
  *     not supressed) and `repayBorrow` or `repayBorrowBehalf` transactions.
  *
  * @returns {object} Returns an Ethers.js transaction object of the repayBorrow
@@ -300,15 +300,15 @@ export async function borrow(
  *
  * ```
  * const compound = new Compound(window.ethereum);
- * 
+ *
  * (async function() {
- * 
+ *
  *   console.log('Repaying Dai borrow...');
  *   const address = null; // set this to any address to repayBorrowBehalf
  *   const trx = await compound.repayBorrow(Compound.DAI, 32, address);
- * 
+ *
  *   console.log('Ethers.js transaction object', trx);
- * 
+ *
  * })().catch(console.error);
  * ```
  */
@@ -322,7 +322,7 @@ export async function repayBorrow(
   await netId(this);
   const errorPrefix = 'Compound [repayBorrow] | ';
 
-  const cTokenName = 'c' + asset;
+  const cTokenName = 'sl' + asset;
   const cTokenAddress = address[this._network.name][cTokenName];
 
   if (!cTokenAddress || !underlyings.includes(asset)) {
@@ -356,7 +356,7 @@ export async function repayBorrow(
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const parameters: any[] = method === 'repayBorrowBehalf' ? [ borrower ] : [];
-  if (cTokenName === constants.cETH) {
+  if (cTokenName === constants.slETH) {
     trxOptions.value = amount;
     trxOptions.abi = abi.cEther;
   } else {
@@ -364,7 +364,7 @@ export async function repayBorrow(
     trxOptions.abi = abi.cErc20;
   }
 
-  if (cTokenName !== constants.cETH && noApprove !== true) {
+  if (cTokenName !== constants.slETH && noApprove !== true) {
     const underlyingAddress = address[this._network.name][asset];
     const userAddress = this._provider.address;
 
