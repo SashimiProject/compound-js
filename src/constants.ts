@@ -15,39 +15,33 @@ export const constants = {
   'ELF': 'ELF',
   'slELF': 'slELF',
   'GOF': 'GOF',
-  'slGOF': 'slGOF'
+  'slGOF': 'slGOF',
+  slDAI: 'slDAI',
+  slUSDC: 'slUSDC',
+  slWBTC: 'slWBTC',
+  slYFI: 'slYFI'
 };
 
 export const address = {
   "mainnet": {
-    "PriceFeed": "0x922018674c12a7f0d394ebeef9b58f186cde13c1",
-    "SASHIMI": "0xC28E27870558cF22ADD83540d2126da2e4b464c2",
-    "Maximillion": "0xf859A1AD94BcF445A406B892eF0d3082f4174088",
-    "CompoundLens": "0xd513d22422a3062Bd342Ae374b4b9c20E0a9a074",
-    "GovernorAlpha": "0xc0dA01a04C3f3E0be433606045bB7017A7323E38",
-    "Comptroller": "0x3d9819210A31b4961b30EF54bE2aeD79B9c9Cd3B",
-    "Reservoir": "0x2775b1c75658Be0F640272CCb8c72ac986009e38",
-    "COMP": "0xc00e94Cb662C3520282E6f5717214004A7f26888",
-    "cBAT": "0x6C8c6b02E7b2BE14d4fA6022Dfd6d75921D90E4E",
-    "cCOMP": "0x70e36f6bf80a52b3b46b3af8e106cc0ed743e8e4",
-    "cDAI": "0x5d3a536E4D6DbD6114cc1Ead35777bAB948E3643",
-    "cETH": "0x4Ddc2D193948926D02f9B1fE9e1daa0718270ED5",
-    "cREP": "0x158079Ee67Fce2f58472A96584A73C7Ab9AC95c1",
-    "cSAI": "0xF5DCe57282A584D2746FaF1593d3121Fcac444dC",
-    "cUNI": "0x35a18000230da775cac24873d00ff85bccded550",
-    "cUSDC": "0x39AA39c021dfbaE8faC545936693aC917d5E7563",
-    "cUSDT": "0xf650C3d88D12dB855b8bf7D11Be6C55A4e07dCC9",
-    "cWBTC": "0xC11b1268C1A384e55C48c2391d8d480264A3A7F4",
-    "cZRX": "0xB3319f5D18Bc0D84dD1b4825Dcde5d5f7266d407",
-    "BAT": "0x0D8775F648430679A709E98d2b0Cb6250d2887EF",
+    "PriceFeed": "0x9fF795A1fB46F869b9158Ef0579a613177D68b26",
+    "CompoundLens": "0x62d19a92ed47258286d65b470e0d26fa49530f81",
+    "Comptroller": "0xb5d53ec97bed54fe4c2b77f275025c3fc132d770",
+    "slETH": "0xc597f86424eeb6599ea40f999dbb739e3aca5d82",
+    "slDAI": "0x2918231f262f764dbb5753a95bd7684fdb313ea4",
+    "slUSDC": "0xBbCc16ab7937469bB1E72337427678e7E701b9Ea",
+    "slSASHIMI": "0x8ce5AA7812FDD6799D4C2B284A6e9f9b186e3Af3",
+    "slUSDT": "0x2394DE3827e233298fff0FdF6Aa261070BFE013d",
+    "slWBTC": "0x09a7fB5E4499e61C7cF53aCB8Df7B2a8e4Fb36F9",
+    "slYFI": "0x6DDBcBAa13bDE44a406780E298721483D684F1B0",
+    "slELF": "0xDDDAf1a95e57F7a74D85F366936F8a2ABBc86b45",
     "DAI": "0x6B175474E89094C44Da98b954EedeAC495271d0F",
-    "REP": "0x1985365e9f78359a9B6AD760e32412f4a445E862",
-    "SAI": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
-    "UNI": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
-    "USDC": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
-    "USDT": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+    "USDC": "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+    "SASHIMI": "0xc28e27870558cf22add83540d2126da2e4b464c2",
+    "USDT": "0xdac17f958d2ee523a2206206994597c13d831ec7",
     "WBTC": "0x2260fac5e5542a773aa44fbcfedf7c193bc2c599",
-    "ZRX": "0xE41d2489571d322189246DaFA5ebDe1F4699F498",
+    "YFI": "0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e",
+    "ELF": "0xbf2179859fc6d5bee9bf9158632dc51678a4100e"
   },
   "rinkeby": {
     "PriceFeed": "0x5722A3F60fa4F0EC5120DCD6C386289A4758D1b2",
@@ -102,7 +96,7 @@ export const address = {
     "ZRX": "0xe4E81Fa6B16327D4B78CFEB83AAdE04bA7075165"
   },
   "kovan": {
-    "PriceFeed": "0xf3e79be9b4f9793bc6cc7ec72e9a9a772dda68c6",
+    "PriceFeed": "0x5DC2E01Eeb2bb00dd7d399777e2563F0360c2069",
     "SASHIMI": "0x4986843fde2b0dae6bdc54c8e16567614ea8786f",
     "Maximillion": "0xC363f83902Ac614F318b04771d21D25aC0d73be5",
     "CompoundLens": "0x76427c3c976ff34645bc78387b82fc6a8e6405b6",
@@ -159,8 +153,8 @@ export const abi = {
   CompoundLens: [{"constant":false,"inputs":[{"internalType":"contract ComptrollerLensInterface","name":"comptroller","type":"address"},{"internalType":"address","name":"account","type":"address"}],"name":"getAccountLimits","outputs":[{"components":[{"internalType":"contract SLToken[]","name":"markets","type":"address[]"},{"internalType":"uint256","name":"liquidity","type":"uint256"},{"internalType":"uint256","name":"shortfall","type":"uint256"}],"internalType":"struct SashimiLendingLens.AccountLimits","name":"","type":"tuple"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"contract EIP20Interface","name":"sashimi","type":"address"},{"internalType":"address","name":"account","type":"address"}],"name":"getSashimiBalanceMetadata","outputs":[{"components":[{"internalType":"uint256","name":"balance","type":"uint256"},{"internalType":"uint256","name":"votes","type":"uint256"},{"internalType":"address","name":"delegate","type":"address"}],"internalType":"struct SashimiLendingLens.SashimiBalanceMetadata","name":"","type":"tuple"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"contract EIP20Interface","name":"sashimi","type":"address"},{"internalType":"contract ComptrollerLensInterface","name":"comptroller","type":"address"},{"internalType":"address","name":"account","type":"address"}],"name":"getSashimiBalanceMetadataExt","outputs":[{"components":[{"internalType":"uint256","name":"balance","type":"uint256"},{"internalType":"uint256","name":"votes","type":"uint256"},{"internalType":"address","name":"delegate","type":"address"},{"internalType":"uint256","name":"allocated","type":"uint256"}],"internalType":"struct SashimiLendingLens.SashimiBalanceMetadataExt","name":"","type":"tuple"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"contract SLToken","name":"slToken","type":"address"},{"internalType":"address payable","name":"account","type":"address"}],"name":"slTokenBalances","outputs":[{"components":[{"internalType":"address","name":"slToken","type":"address"},{"internalType":"uint256","name":"balanceOf","type":"uint256"},{"internalType":"uint256","name":"borrowBalanceCurrent","type":"uint256"},{"internalType":"uint256","name":"balanceOfUnderlying","type":"uint256"},{"internalType":"uint256","name":"tokenBalance","type":"uint256"},{"internalType":"uint256","name":"tokenAllowance","type":"uint256"}],"internalType":"struct SashimiLendingLens.SLTokenBalances","name":"","type":"tuple"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"contract SLToken[]","name":"slTokens","type":"address[]"},{"internalType":"address payable","name":"account","type":"address"}],"name":"slTokenBalancesAll","outputs":[{"components":[{"internalType":"address","name":"slToken","type":"address"},{"internalType":"uint256","name":"balanceOf","type":"uint256"},{"internalType":"uint256","name":"borrowBalanceCurrent","type":"uint256"},{"internalType":"uint256","name":"balanceOfUnderlying","type":"uint256"},{"internalType":"uint256","name":"tokenBalance","type":"uint256"},{"internalType":"uint256","name":"tokenAllowance","type":"uint256"}],"internalType":"struct SashimiLendingLens.SLTokenBalances[]","name":"","type":"tuple[]"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"contract SLToken","name":"slToken","type":"address"}],"name":"slTokenMetadata","outputs":[{"components":[{"internalType":"address","name":"slToken","type":"address"},{"internalType":"uint256","name":"exchangeRateCurrent","type":"uint256"},{"internalType":"uint256","name":"supplyRatePerBlock","type":"uint256"},{"internalType":"uint256","name":"borrowRatePerBlock","type":"uint256"},{"internalType":"uint256","name":"reserveFactorMantissa","type":"uint256"},{"internalType":"uint256","name":"totalBorrows","type":"uint256"},{"internalType":"uint256","name":"totalReserves","type":"uint256"},{"internalType":"uint256","name":"totalSupply","type":"uint256"},{"internalType":"uint256","name":"totalCash","type":"uint256"},{"internalType":"bool","name":"isListed","type":"bool"},{"internalType":"uint256","name":"collateralFactorMantissa","type":"uint256"},{"internalType":"address","name":"underlyingAssetAddress","type":"address"},{"internalType":"uint256","name":"slTokenDecimals","type":"uint256"},{"internalType":"uint256","name":"underlyingDecimals","type":"uint256"}],"internalType":"struct SashimiLendingLens.SLTokenMetadata","name":"","type":"tuple"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"contract SLToken[]","name":"slTokens","type":"address[]"}],"name":"slTokenMetadataAll","outputs":[{"components":[{"internalType":"address","name":"slToken","type":"address"},{"internalType":"uint256","name":"exchangeRateCurrent","type":"uint256"},{"internalType":"uint256","name":"supplyRatePerBlock","type":"uint256"},{"internalType":"uint256","name":"borrowRatePerBlock","type":"uint256"},{"internalType":"uint256","name":"reserveFactorMantissa","type":"uint256"},{"internalType":"uint256","name":"totalBorrows","type":"uint256"},{"internalType":"uint256","name":"totalReserves","type":"uint256"},{"internalType":"uint256","name":"totalSupply","type":"uint256"},{"internalType":"uint256","name":"totalCash","type":"uint256"},{"internalType":"bool","name":"isListed","type":"bool"},{"internalType":"uint256","name":"collateralFactorMantissa","type":"uint256"},{"internalType":"address","name":"underlyingAssetAddress","type":"address"},{"internalType":"uint256","name":"slTokenDecimals","type":"uint256"},{"internalType":"uint256","name":"underlyingDecimals","type":"uint256"}],"internalType":"struct SashimiLendingLens.SLTokenMetadata[]","name":"","type":"tuple[]"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"contract SLToken","name":"slToken","type":"address"}],"name":"slTokenUnderlyingPrice","outputs":[{"components":[{"internalType":"address","name":"slToken","type":"address"},{"internalType":"uint256","name":"underlyingPrice","type":"uint256"}],"internalType":"struct SashimiLendingLens.SLTokenUnderlyingPrice","name":"","type":"tuple"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"contract SLToken[]","name":"slTokens","type":"address[]"}],"name":"slTokenUnderlyingPriceAll","outputs":[{"components":[{"internalType":"address","name":"slToken","type":"address"},{"internalType":"uint256","name":"underlyingPrice","type":"uint256"}],"internalType":"struct SashimiLendingLens.SLTokenUnderlyingPrice[]","name":"","type":"tuple[]"}],"payable":false,"stateMutability":"nonpayable","type":"function"}]
 };
 
-export const cTokens = ['slETH', 'slUSDT', 'slELF', 'slGOF', 'slSASHIMI'];
-export const underlyings = ['ETH', 'USDT', 'ELF', 'GOF', 'SASHIMI'];
+export const cTokens = ['slETH', 'slUSDT', 'slELF', 'slGOF', 'slSASHIMI', 'slUSDC', 'slWBTC', 'slYFI', 'slDAI'];
+export const underlyings = ['ETH', 'USDT', 'ELF', 'GOF', 'SASHIMI', 'USDC', 'WBTC', 'YFI', 'DAI'];
 
 // additional assets supported by the open price feed
 export const opfAssets = ['KNC', 'LINK', 'BTC'];
@@ -170,9 +164,18 @@ export const decimals = {
   'slUSDT': 8,
   'slELF': 8,
   'slGOF': 8,
+  'slDAI': 8,
+  'slUSDC': 8,
+  'slWBTC': 8,
+  'slSASHIMI': 8,
+  'slYFI': 8,
   'SASHIMI': 18,
   'ETH': 18,
   'USDT': 6,
+  USDC: 6,
+  DAI: 18,
+  YFI: 18,
+  WBTC: 8,
   'ELF': 18,
   'GOF': 18
 };
