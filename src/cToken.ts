@@ -171,7 +171,7 @@ export async function redeem(
   const cTokenName = assetIsCToken ? asset : 'sl' + asset;
   const cTokenAddress = address[this._network.name][cTokenName];
 
-  const underlyingName = assetIsCToken ? asset.slice(1, asset.length) : asset;
+  const underlyingName = assetIsCToken ? asset.slice(2, asset.length) : asset;
 
   if (!cTokens.includes(cTokenName) || !underlyings.includes(underlyingName)) {
     throw Error(errorPrefix + 'Argument `asset` is not supported.');

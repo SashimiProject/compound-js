@@ -25,7 +25,7 @@ function validateAsset(
   const cTokenName = assetIsCToken ? asset : 'sl' + asset;
   const cTokenAddress = address[this._network.name][cTokenName];
 
-  let underlyingName = assetIsCToken ? asset.slice(1, asset.length) : asset;
+  let underlyingName = assetIsCToken ? asset.slice(2, asset.length) : asset;
   const underlyingAddress = address[this._network.name][underlyingName];
 
   if (
