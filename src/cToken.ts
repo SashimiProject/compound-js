@@ -166,7 +166,7 @@ export async function redeem(
     throw Error(errorPrefix + 'Argument `asset` must be a non-empty string.');
   }
 
-  const assetIsCToken = asset[0] === 'sl';
+  const assetIsCToken = asset.slice(0, 2) === 'sl';
 
   const cTokenName = assetIsCToken ? asset : 'sl' + asset;
   const cTokenAddress = address[this._network.name][cTokenName];
