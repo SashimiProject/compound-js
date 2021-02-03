@@ -3,7 +3,7 @@
  * @desc These methods are helpers for the Compound class.
  */
 
-import { address, abi } from './constants';
+import { address, abi, decimals } from './constants';
 import { AbiType } from './types';
 
 /* eslint-disable */
@@ -165,7 +165,7 @@ export function request(options: any) : Promise<any> {
 /* eslint-enable */
 
 /**
- * Gets the contract address of the named contract. This method supports 
+ * Gets the contract address of the named contract. This method supports
  *     contracts used by the Compound Protocol.
  *
  * @param {string} contract The name of the contract.
@@ -183,8 +183,32 @@ export function getAddress(contract: string, network='mainnet') : string {
   return address[network][contract];
 }
 
+export function getSymbolByAddress(tokenAddress: string, network = 'mainnet'): string {
+  const addresses = address[network];
+  const keys = Object.keys(address[network]);
+  let symbol = '';
+  for (let i = 0; i < keys.length; i++) {
+    const key = keys[i];
+    if (addresses[key].toLowerCase() === tokenAddress.toLowerCase()) {
+      symbol = key;
+      break;
+    }
+  }
+  return symbol;
+}
+
+export function getUnderlyingAddressBySlToken(slToken: string, network = 'mainnet'): string {
+  const slTokenSymbol = getSymbolByAddress(slToken, network);
+  const underlyingSymbol = slTokenSymbol.slice(2);
+  return address[network][underlyingSymbol];
+}
+
+export function getTokenDecimals(underlyingSymbol: string): string {
+  return decimals[underlyingSymbol];
+}
+
 /**
- * Gets a contract ABI as a JavaScript array. This method supports 
+ * Gets a contract ABI as a JavaScript array. This method supports
  *     contracts used by the Compound Protocol.
  *
  * @param {string} contract The name of the contract.
