@@ -26,6 +26,7 @@ export const address = {
   "mainnet": {
     "PriceFeed": "0x9fF795A1fB46F869b9158Ef0579a613177D68b26",
     "CompoundLens": "0x62d19a92ed47258286d65b470e0d26fa49530f81",
+    "Maximillion": "0xf859A1AD94BcF445A406B892eF0d3082f4174088",
     "Comptroller": "0xb5d53ec97bed54fe4c2b77f275025c3fc132d770",
     "slETH": "0xc597f86424eeb6599ea40f999dbb739e3aca5d82",
     "slDAI": "0x2918231f262f764dbb5753a95bd7684fdb313ea4",
