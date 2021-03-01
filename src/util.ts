@@ -224,6 +224,7 @@ export function getAbi(contract: string): AbiType[] {
   return abi[contract];
 }
 
+// 多生态链
 export const networks = {
   1: 'mainnet',
   3: 'ropsten',
@@ -249,6 +250,7 @@ export function getNetNameWithChainId(chainId: number) : string {
   return networks[chainId];
 }
 
+// 多生态链
 const bscChainIds = [56, 97];
 const hecoChainIds = [128, 256];
 
@@ -261,6 +263,7 @@ export function isNativeSlToken(symbol: string, chainId: number): boolean {
   return symbol === constants.slETH;
 }
 
+// todo: 多生态链
 const nativeSymbols = {
   mainnet: 'ETH',
   tbsc: 'BNB',
