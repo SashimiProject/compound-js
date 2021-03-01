@@ -8,10 +8,11 @@ import { ethers } from 'ethers';
 import * as eth from './eth';
 import { netId } from './helpers';
 import {
-  constants, address, abi, decimals, underlyings, cTokens
+  address, abi, decimals, underlyings, cTokens
 } from './constants';
 import { BigNumber } from '@ethersproject/bignumber/lib/bignumber';
 import { CallOptions, TrxResponse } from './types';
+import {isNativeSlToken} from "./util";
 
 /**
  * Supplies the user's Ethereum asset to the Compound Protocol.
@@ -78,7 +79,7 @@ export async function supply(
 
   amount = ethers.BigNumber.from(amount.toString());
 
-  if (cTokenName === constants.slETH) {
+  if (isNativeSlToken(cTokenName, this._network.id)) {
     options.abi = abi.cEther;
   } else {
     options.abi = abi.cErc20;
@@ -86,7 +87,7 @@ export async function supply(
 
   options._compoundProvider = this._provider;
 
-  if (cTokenName !== constants.slETH && noApprove !== true) {
+  if (!isNativeSlToken(cTokenName, this._network.id) && noApprove !== true) {
     const underlyingAddress = address[this._network.name][asset];
     let userAddress = this._provider.address;
 
@@ -116,7 +117,7 @@ export async function supply(
   }
 
   const parameters = [];
-  if (cTokenName === constants.slETH) {
+  if (isNativeSlToken(cTokenName, this._network.id)) {
     options.value = amount;
   } else {
     parameters.push(amount);
@@ -194,7 +195,7 @@ export async function redeem(
 
   const trxOptions: CallOptions = {
     _compoundProvider: this._provider,
-    abi: cTokenName === constants.slETH ? abi.cEther : abi.cErc20,
+    abi: isNativeSlToken(cTokenName, this._network.id) ? abi.cEther : abi.cErc20,
   };
   const parameters = [ amount ];
   const method = assetIsCToken ? 'redeem' : 'redeemUnderlying';
@@ -272,7 +273,7 @@ export async function borrow(
     _compoundProvider: this._provider,
   };
   const parameters = [ amount ];
-  trxOptions.abi = cTokenName === constants.slETH ? abi.cEther : abi.cErc20;
+  trxOptions.abi = isNativeSlToken(cTokenName, this._network.id) ? abi.cEther : abi.cErc20;
 
   return eth.trx(cTokenAddress, 'borrow', parameters, trxOptions);
 }
@@ -360,7 +361,7 @@ export async function repayBorrow(
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const parameters: any[] = method === 'repayBorrowBehalf' ? [ borrower ] : [];
-  if (cTokenName === constants.slETH) {
+  if (isNativeSlToken(cTokenName, this._network.id)) {
     trxOptions.value = amount;
     trxOptions.abi = abi.cEther;
   } else {
@@ -368,7 +369,7 @@ export async function repayBorrow(
     trxOptions.abi = abi.cErc20;
   }
 
-  if (cTokenName !== constants.slETH && noApprove !== true) {
+  if (!isNativeSlToken(cTokenName, this._network.id) && noApprove !== true) {
     const underlyingAddress = address[this._network.name][asset];
     let userAddress = this._provider.address;
 

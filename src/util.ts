@@ -3,8 +3,8 @@
  * @desc These methods are helpers for the Compound class.
  */
 
-import { address, abi, decimals } from './constants';
-import { AbiType } from './types';
+import { address, abi, decimals, constants } from './constants';
+import {AbiType} from './types';
 
 /* eslint-disable */
 
@@ -224,6 +224,15 @@ export function getAbi(contract: string): AbiType[] {
   return abi[contract];
 }
 
+export const networks = {
+  1: 'mainnet',
+  3: 'ropsten',
+  4: 'rinkeby',
+  5: 'goerli',
+  42: 'kovan',
+  56: 'bsc',
+  97: 'tbsc'
+};
 /**
  * Gets the name of an Ethereum network based on its chain ID.
  *
@@ -237,12 +246,29 @@ export function getAbi(contract: string): AbiType[] {
  * ```
  */
 export function getNetNameWithChainId(chainId: number) : string {
-  const networks = {
-    1: 'mainnet',
-    3: 'ropsten',
-    4: 'rinkeby',
-    5: 'goerli',
-    42: 'kovan',
-  };
   return networks[chainId];
+}
+
+const bscChainIds = [56, 97];
+const hecoChainIds = [128, 256];
+
+export function isNativeSlToken(symbol: string, chainId: number): boolean {
+  if (bscChainIds.indexOf(chainId) > -1) {
+    return symbol === constants.slBNB;
+  } else if (hecoChainIds.indexOf(chainId) > -1) {
+    return symbol === constants.slHT;
+  }
+  return symbol === constants.slETH;
+}
+
+const nativeSymbols = {
+  mainnet: 'ETH',
+  tbsc: 'BNB',
+  bsc: 'BNB',
+  heco: 'HT',
+  theco: 'HT'
+};
+
+export function getNativeTokenSymbol(network = 'mainnet'): string {
+  return nativeSymbols[network] || 'ETH';
 }

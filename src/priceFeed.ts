@@ -10,6 +10,7 @@ import {
   constants, address, abi, cTokens, underlyings, decimals, opfAssets
 } from './constants';
 import { CallOptions } from './types';
+import {isNativeSlToken} from "./util";
 
 function validateAsset(
   asset: string,
@@ -52,7 +53,7 @@ async function cTokenExchangeRate(
   const method = 'exchangeRateCurrent';
   const options = {
     _compoundProvider: this._provider,
-    abi: cTokenName === constants.slETH ? abi.cEther : abi.cErc20,
+    abi: isNativeSlToken(cTokenName, this._network.id) ? abi.cEther : abi.cErc20,
   };
   const exchangeRateCurrent = await eth.read(address, method, [], options);
   const mantissa = 18 + underlyingDecimals - 8; // cToken always 8 decimals

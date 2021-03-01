@@ -13,13 +13,22 @@ export const constants = {
   'ETH': 'ETH',
   'USDT': 'USDT',
   'ELF': 'ELF',
+  DAI: 'DAI',
+  BUSD: 'BUSD',
+  slBUSD: 'slBUSD',
   'slELF': 'slELF',
   'GOF': 'GOF',
+  BNB: 'BNB',
+  HT: 'HT',
   'slGOF': 'slGOF',
   slDAI: 'slDAI',
   slUSDC: 'slUSDC',
   slWBTC: 'slWBTC',
-  slYFI: 'slYFI'
+  slYFI: 'slYFI',
+  slBNB: 'slBNB',
+  slHT: 'slHT',
+  BTCB: 'BTCB',
+  slBTCB: 'slBTCB'
 };
 
 export const address = {
@@ -140,6 +149,38 @@ export const address = {
     "USDT": "0x516de3a7A567d81737e3a46ec4FF9cFD1fcb0136",
     "WBTC": "0xBde8bB00A7eF67007A96945B3a3621177B615C44",
     "ZRX": "0xE4C6182EA459E63B8F1be7c428381994CcC2D49c"
+  },
+  bsc: {
+    "PriceFeed": "0xbac0669a5C01e15b7894a4C1Cc9e0E87Fa76536B",
+    "Maximillion": "0xA73CBEd08837438b4BB88cfD4af3E5c40C308a00",
+    "CompoundLens": "0x47f9657218f891522C57B328103f5229543A3F1f",
+    "Comptroller": "0x88fEf82FDf75E32e4BC0e662d67CfcEF4838F026",
+    "slETH": "0x6Cb9d7ecf84b0d3E7704ed91046e16f9D45C00FA",
+    "slUSDT": "0x87DCFE452B631F670e76dD25593363ea9eF4Cc11",
+    "slBNB": "0x6Df484F552115fa7F54bE4A6D7aE2999cadB2324",
+    slBTCB: '0xB5ef94c09439Fb1018c1F51029Be7dF96A833A84',
+    slBUSD: '0x319c4979044E7108d0b5656a13FeA5dFc26e9c0b',
+    slDAI: '0x1c3390c139E461f8075DcBf43C98B31D9E44894e',
+    "ETH": "0x2170ed0880ac9a755fd29b2688956bd959f933f8",
+    ELF: "0xa3f020a5c92e15be13caf0ee5c95cf79585eecc9",
+    "SASHIMI": "0xC28E27870558cF22ADD83540d2126da2e4b464c2",
+    "USDT": "0x55d398326f99059fF775485246999027B3197955",
+    "BUSD": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
+    "BTCB": "0x7130d2a12b9bcbfae4f2634d864a1ee1ce3ead9c",
+    DAI: "0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3"
+  },
+  tbsc: {
+    "PriceFeed": "0x11Cca67E8E44fA9D9dbCaF180C20518C89DB9Af0",
+    "Maximillion": "0x307e5C324F5C8A3d9aE4aFAccdaAFD3A02dC4577",
+    "CompoundLens": "0x6C7B9511F2e437101876A62615378Fce6Fdb6e7B",
+    "Comptroller": "0x0e0bd2f6AC6d3644c52C908392973B404Cfb6EC2",
+    "slETH": "0x2bEB6a7A0D4e49548666E90F71aDCd862Be68cd6",
+    "slSASHIMI": "0x7c009318652Cc22d7143D1F0c11b60D668CAD3e2",
+    "slUSDT": "0x70023dcF721Fe4c478d14DA65A5F92e487D5ff31",
+    "slBNB": "0x5FfB9A8AA366cf260EA26ad6bC7799E2414d02eC",
+    "ETH": "0x86b8AC6E084B8fF4E851716Ca8c3F8E5BAdb099e",
+    "SASHIMI": "0xFCB644FF1872412bff732dE4F2EBB5fa4F27f0C1",
+    "USDT": "0x3F280eE5876CE8B15081947E0f189E336bb740A5",
   }
 };
 
@@ -154,8 +195,8 @@ export const abi = {
   CompoundLens: [{"constant":false,"inputs":[{"internalType":"contract ComptrollerLensInterface","name":"comptroller","type":"address"},{"internalType":"address","name":"account","type":"address"}],"name":"getAccountLimits","outputs":[{"components":[{"internalType":"contract SLToken[]","name":"markets","type":"address[]"},{"internalType":"uint256","name":"liquidity","type":"uint256"},{"internalType":"uint256","name":"shortfall","type":"uint256"}],"internalType":"struct SashimiLendingLens.AccountLimits","name":"","type":"tuple"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"internalType":"contract EIP20Interface","name":"sashimi","type":"address"},{"internalType":"address","name":"account","type":"address"}],"name":"getSashimiBalanceMetadata","outputs":[{"components":[{"internalType":"uint256","name":"balance","type":"uint256"},{"internalType":"uint256","name":"votes","type":"uint256"},{"internalType":"address","name":"delegate","type":"address"}],"internalType":"struct SashimiLendingLens.SashimiBalanceMetadata","name":"","type":"tuple"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"internalType":"contract EIP20Interface","name":"sashimi","type":"address"},{"internalType":"contract ComptrollerLensInterface","name":"comptroller","type":"address"},{"internalType":"address","name":"account","type":"address"}],"name":"getSashimiBalanceMetadataExt","outputs":[{"components":[{"internalType":"uint256","name":"balance","type":"uint256"},{"internalType":"uint256","name":"votes","type":"uint256"},{"internalType":"address","name":"delegate","type":"address"},{"internalType":"uint256","name":"allocated","type":"uint256"}],"internalType":"struct SashimiLendingLens.SashimiBalanceMetadataExt","name":"","type":"tuple"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"contract SLToken","name":"slToken","type":"address"},{"internalType":"address payable","name":"account","type":"address"}],"name":"slTokenBalances","outputs":[{"components":[{"internalType":"address","name":"slToken","type":"address"},{"internalType":"uint256","name":"balanceOf","type":"uint256"},{"internalType":"uint256","name":"borrowBalanceCurrent","type":"uint256"},{"internalType":"uint256","name":"balanceOfUnderlying","type":"uint256"},{"internalType":"uint256","name":"tokenBalance","type":"uint256"},{"internalType":"uint256","name":"tokenAllowance","type":"uint256"}],"internalType":"struct SashimiLendingLens.SLTokenBalances","name":"","type":"tuple"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"contract SLToken[]","name":"slTokens","type":"address[]"},{"internalType":"address payable","name":"account","type":"address"}],"name":"slTokenBalancesAll","outputs":[{"components":[{"internalType":"address","name":"slToken","type":"address"},{"internalType":"uint256","name":"balanceOf","type":"uint256"},{"internalType":"uint256","name":"borrowBalanceCurrent","type":"uint256"},{"internalType":"uint256","name":"balanceOfUnderlying","type":"uint256"},{"internalType":"uint256","name":"tokenBalance","type":"uint256"},{"internalType":"uint256","name":"tokenAllowance","type":"uint256"}],"internalType":"struct SashimiLendingLens.SLTokenBalances[]","name":"","type":"tuple[]"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"contract SLToken","name":"slToken","type":"address"}],"name":"slTokenMetadata","outputs":[{"components":[{"internalType":"address","name":"slToken","type":"address"},{"internalType":"uint256","name":"exchangeRateCurrent","type":"uint256"},{"internalType":"uint256","name":"supplyRatePerBlock","type":"uint256"},{"internalType":"uint256","name":"borrowRatePerBlock","type":"uint256"},{"internalType":"uint256","name":"reserveFactorMantissa","type":"uint256"},{"internalType":"uint256","name":"totalBorrows","type":"uint256"},{"internalType":"uint256","name":"totalReserves","type":"uint256"},{"internalType":"uint256","name":"totalSupply","type":"uint256"},{"internalType":"uint256","name":"totalCash","type":"uint256"},{"internalType":"bool","name":"isListed","type":"bool"},{"internalType":"uint256","name":"collateralFactorMantissa","type":"uint256"},{"internalType":"address","name":"underlyingAssetAddress","type":"address"},{"internalType":"uint256","name":"slTokenDecimals","type":"uint256"},{"internalType":"uint256","name":"underlyingDecimals","type":"uint256"}],"internalType":"struct SashimiLendingLens.SLTokenMetadata","name":"","type":"tuple"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"contract SLToken[]","name":"slTokens","type":"address[]"}],"name":"slTokenMetadataAll","outputs":[{"components":[{"internalType":"address","name":"slToken","type":"address"},{"internalType":"uint256","name":"exchangeRateCurrent","type":"uint256"},{"internalType":"uint256","name":"supplyRatePerBlock","type":"uint256"},{"internalType":"uint256","name":"borrowRatePerBlock","type":"uint256"},{"internalType":"uint256","name":"reserveFactorMantissa","type":"uint256"},{"internalType":"uint256","name":"totalBorrows","type":"uint256"},{"internalType":"uint256","name":"totalReserves","type":"uint256"},{"internalType":"uint256","name":"totalSupply","type":"uint256"},{"internalType":"uint256","name":"totalCash","type":"uint256"},{"internalType":"bool","name":"isListed","type":"bool"},{"internalType":"uint256","name":"collateralFactorMantissa","type":"uint256"},{"internalType":"address","name":"underlyingAssetAddress","type":"address"},{"internalType":"uint256","name":"slTokenDecimals","type":"uint256"},{"internalType":"uint256","name":"underlyingDecimals","type":"uint256"}],"internalType":"struct SashimiLendingLens.SLTokenMetadata[]","name":"","type":"tuple[]"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"contract SLToken","name":"slToken","type":"address"}],"name":"slTokenUnderlyingPrice","outputs":[{"components":[{"internalType":"address","name":"slToken","type":"address"},{"internalType":"uint256","name":"underlyingPrice","type":"uint256"}],"internalType":"struct SashimiLendingLens.SLTokenUnderlyingPrice","name":"","type":"tuple"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"internalType":"contract SLToken[]","name":"slTokens","type":"address[]"}],"name":"slTokenUnderlyingPriceAll","outputs":[{"components":[{"internalType":"address","name":"slToken","type":"address"},{"internalType":"uint256","name":"underlyingPrice","type":"uint256"}],"internalType":"struct SashimiLendingLens.SLTokenUnderlyingPrice[]","name":"","type":"tuple[]"}],"payable":false,"stateMutability":"nonpayable","type":"function"}]
 };
 
-export const cTokens = ['slETH', 'slUSDT', 'slELF', 'slGOF', 'slSASHIMI', 'slUSDC', 'slWBTC', 'slYFI', 'slDAI'];
-export const underlyings = ['ETH', 'USDT', 'ELF', 'GOF', 'SASHIMI', 'USDC', 'WBTC', 'YFI', 'DAI'];
+export const cTokens = ['slETH', 'slUSDT', 'slELF', 'slGOF', 'slSASHIMI', 'slUSDC', 'slWBTC', 'slYFI', 'slDAI', 'slHT', 'slBNB', 'slBTCB', 'slBUSD'];
+export const underlyings = ['ETH', 'USDT', 'ELF', 'GOF', 'SASHIMI', 'USDC', 'WBTC', 'YFI', 'DAI', 'HT', 'BNB', 'BUSD', 'BTCB'];
 
 // additional assets supported by the open price feed
 export const opfAssets = ['KNC', 'LINK', 'BTC'];
@@ -170,15 +211,22 @@ export const decimals = {
   'slWBTC': 8,
   'slSASHIMI': 8,
   'slYFI': 8,
+  'slBTCB': 8,
+  slBNB: 8,
+  slHT: 8,
   'SASHIMI': 18,
   'ETH': 18,
   'USDT': 6,
   USDC: 6,
   DAI: 18,
+  BUSD: 18,
   YFI: 18,
   WBTC: 8,
   'ELF': 18,
-  'GOF': 18
+  'GOF': 18,
+  BNB: 18,
+  HT: 18,
+  BTCB: 18
 };
 
 export const errorCodes = {
